@@ -24,6 +24,16 @@ class TestDate(object):
         days_date_before = DateTools.get_days_date_before(days=31)
         print(days_date_before)
 
+    def test_get_days_date_after(self):
+        days_date_before = DateTools.get_yesterday_date()
+        print(days_date_before)
+
     def test_get_now_date(self):
         now_date = DateTools.get_now_date(fmt="%Y-%m-%d %H:%M:%S")
         print(now_date)
+
+    def test_date(self):
+        print(DateTools.get_week_after())
+        print(DateTools.get_week_before())
+        print(DateTools.get_tomorrow_date())
+        print(DateTools.get_yesterday_date())

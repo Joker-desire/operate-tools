@@ -22,7 +22,7 @@ from datetime import datetime, timedelta
 class DateTools(object):
 
     @staticmethod
-    def get_now_date(fmt='%Y-%m-%d'):
+    def get_now_date(fmt='%Y-%m-%d') -> str:
         """获取当前日期
 
         Args:
@@ -35,7 +35,7 @@ class DateTools(object):
         return now.strftime(fmt)
 
     @staticmethod
-    def get_days_date_before(days=31, fmt="%Y-%m-%d %H:%M:%S"):
+    def get_days_date_before(days=31, fmt="%Y-%m-%d %H:%M:%S") -> str:
         """获取前几天的日期
 
         Args:
@@ -49,7 +49,69 @@ class DateTools(object):
         return time_data.strftime(fmt)
 
     @staticmethod
-    def get_every_day_date(begin_date: str, end_date: str, fmt="%Y-%m-%d"):
+    def get_days_date_after(days=31, fmt="%Y-%m-%d %H:%M:%S") -> str:
+        """获取后几天的日期
+
+        Args:
+            days (int, optional): 后n天. Defaults to 31.
+            fmt (str, optional): 日期格式. Defaults to "%Y-%m-%d %H:%M:%S".
+
+        Returns:
+            str: 格式化后的日期
+        """
+        time_data = datetime.now() + timedelta(days=days)
+        return time_data.strftime(fmt)
+
+    @staticmethod
+    def get_yesterday_date(fmt="%Y-%m-%d %H:%M:%S") -> str:
+        """获取昨天的日期
+
+        Args:
+            fmt (str, optional): 日期格式. Defaults to "%Y-%m-%d %H:%M:%S".
+
+        Returns:
+            str: 格式化后的日期
+        """
+        return DateTools.get_days_date_before(days=1, fmt=fmt)
+
+    @staticmethod
+    def get_tomorrow_date(fmt="%Y-%m-%d %H:%M:%S") -> str:
+        """获取明天的日期
+
+        Args:
+            fmt (str, optional): 日期格式. Defaults to "%Y-%m-%d %H:%M:%S".
+
+        Returns:
+            str: 格式化后的日期
+        """
+        return DateTools.get_days_date_after(days=1, fmt=fmt)
+
+    @staticmethod
+    def get_week_before(fmt="%Y-%m-%d %H:%M:%S") -> str:
+        """获取一周前的日期
+
+        Args:
+            fmt (str, optional): 日期格式. Defaults to "%Y-%m-%d %H:%M:%S".
+
+        Returns:
+            str: 格式化后的日期
+        """
+        return DateTools.get_days_date_before(days=7, fmt=fmt)
+
+    @staticmethod
+    def get_week_after(fmt="%Y-%m-%d %H:%M:%S") -> str:
+        """获取一周后的日期
+
+        Args:
+            fmt (str, optional): 日期格式. Defaults to "%Y-%m-%d %H:%M:%S".
+
+        Returns:
+            str: 格式化后的日期
+        """
+        return DateTools.get_days_date_after(days=7, fmt=fmt)
+
+    @staticmethod
+    def get_every_day_date(begin_date: str, end_date: str, fmt="%Y-%m-%d") -> list:
         """获取开始到结束日期的每一天日期
 
         Args:
@@ -70,7 +132,7 @@ class DateTools(object):
         return date_list
 
     @staticmethod
-    def time_difference(start_time: str, end_time: str):
+    def time_difference(start_time: str, end_time: str) -> timedelta:
         """计算时间差
 
         Args:
