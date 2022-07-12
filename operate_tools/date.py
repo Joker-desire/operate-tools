@@ -1,22 +1,22 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 """
-@File    :   tools.py
+@File    :   date.py
 @Time    :   2022/07/11 17:37:35
 @Author  :   Desire
 @Version :   1.0
-@Contact :   yangyin@addcn.com
 @Desc    :   None
 """
-__all__ = ["date"]
 
-from datetime import datetime, timedelta
 import os
 import sys
 
-# 把项目根路径插入到路径查询列表中
 sys.path.insert(1, os.getcwd())
 # here put the import lib
+
+__all__ = ["DateTools"]
+
+from datetime import datetime, timedelta
 
 
 class DateTools(object):
@@ -60,7 +60,6 @@ class DateTools(object):
         Returns:
             list: 日期列表
         """
-        # 前闭后闭
         date_list = []
         begin_date = datetime.strptime(begin_date, fmt)
         end_date = datetime.strptime(end_date, fmt)
@@ -85,11 +84,3 @@ class DateTools(object):
         t1 = datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S")
         t2 = datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
         return t2 - t1
-
-
-date = DateTools()
-
-if __name__ == "__main__":
-    d = date.time_difference(
-        start_time="2022-03-17 16:15:38", end_time="2022-03-18 19:15:40")
-    print(type(d))
