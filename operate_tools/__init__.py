@@ -14,5 +14,6 @@ import sys
 sys.path.insert(1, os.getcwd())
 # here put the import lib
 
-from operate_tools.date import DateTools
+from operate_tools.date_ import DateTools
 from operate_tools.time_ import TimeTools
+from operate_tools.file_ import FileTools
