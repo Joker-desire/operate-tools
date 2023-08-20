@@ -10,6 +10,15 @@ Python操作工具合集
 
 [![OSCS Status](https://www.oscs1024.com/platform/badge/Joker-desire/operate-tools.svg?size=large)](https://www.oscs1024.com/project/Joker-desire/operate-tools?ref=badge_large)
 
+## 安装
+
+```shell
+pip3 install operate-tools
+
+# v1.0.5版本对整体进行了重写，对于之前的版本请使用以下方式进行安装
+pip3 install operate-tools==1.0.4
+```
+
 ## 功能如下
 
 1. [X] 日期操作
@@ -71,11 +80,13 @@ Date.next_week(fmt="%Y-%m-%d")
 ```
 
 ##### 8. 获取上个月的日期
+
 ```python
 Date.last_month(fmt="%Y-%m-%d")
 ```
 
 ##### 9. 获取下个月的日期
+
 ```python
 Date.next_month(fmt="%Y-%m-%d")
 ```
