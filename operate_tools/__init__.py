@@ -1,19 +1,9 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   __init__.py
-@Time    :   2022/07/12 09:58:25
-@Author  :   Desire
-@Version :   1.0
-@Desc    :   None
-"""
+# -*- coding: utf-8 -*-
+# @Time: 2022/07/12 09:58:25
+# @File: __init__.py
+# @Desc：
 
-import os
-import sys
+from . import _date, _file
 
-sys.path.insert(1, os.getcwd())
-# here put the import lib
-
-from operate_tools.date_ import DateTools
-from operate_tools.time_ import TimeTools
-from operate_tools.file_ import FileTools
+Date = _date.DateTools()
+File = _file.FileTools()

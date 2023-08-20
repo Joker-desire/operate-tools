@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 Pipfile
 Pipfile.lock
+
+.idea
