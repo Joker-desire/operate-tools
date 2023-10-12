@@ -14,6 +14,7 @@ _week_dict = {"zh": _zh_week, "en": _en_week}
 
 class DateTools:
 
+    # ----------- now -----------
     @staticmethod
     def now(fmt='%Y-%m-%d') -> str:
         """
@@ -23,6 +24,14 @@ class DateTools:
         """
         now = datetime.now()
         return now.strftime(fmt)
+
+    @staticmethod
+    def timestamp():
+        """
+        获取当前时间戳
+        :return:
+        """
+        return datetime.now().timestamp()
 
     @staticmethod
     def days_before(days=31, fmt="%Y-%m-%d") -> str:
@@ -172,32 +181,32 @@ class DateTools:
         return t.strftime(fmt)
 
     @staticmethod
-    def now_week(lang=None) -> int | str:
+    def now_week(lang='zh') -> str:
         """
         获取当前星期
         :param lang: 语言. Defaults Number. ['zh', 'en']
         :return:
         """
-        if lang:
-            try:
-                return _week_dict[lang][datetime.now().isoweekday()]
-            except KeyError as _:
-                pass
-            raise KeyError("lang value in ['zh', 'en']")
-        return datetime.now().isoweekday()
+        return DateTools.week(DateTools.now(), lang=lang)
 
     @staticmethod
-    def week(date: str, lang=None) -> int | str:
+    def week(date: str, lang='zh') -> str:
         """
         获取某一日期的星期
         :param date: 日期
         :param lang: 语言. Defaults Number. ['zh', 'en']
         :return:
         """
-        if lang:
-            try:
-                return _week_dict[lang][datetime.strptime(date, "%Y-%m-%d").isoweekday()]
-            except KeyError as _:
-                pass
+        try:
+            return _week_dict[lang][datetime.strptime(date, "%Y-%m-%d").isoweekday()]
+        except KeyError as _:
             raise KeyError("lang value in ['zh', 'en']")
-        return datetime.strptime(date, "%Y-%m-%d").isoweekday()
+
+    @staticmethod
+    def isleap(year: int) -> bool:
+        """
+        判断是否为闰年
+        :param year: 年份
+        :return: bool
+        """
+        return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
